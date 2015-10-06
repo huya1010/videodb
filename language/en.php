@@ -320,8 +320,18 @@ $lang['records']             = "records";
 $lang['warn_noOwner']        = "Data not saved - you have to select an owner first!";
 
 //2015-10-6 Alex Add start studios
-$lang['studio']               = "studio";
-$lang['studios']              = "studios";
+$lang['studio']              = "Studio";
+$lang['studios']             = "Studios";
+$lang['videobystud']         = "Videos by studios";
+$lang['multiple_studio']     = "<small>(multiple studios<br />per video possible)</small>";
+
+$lang['location']            = "Location";
+
+$lang['downloads_1']         = "Emule";
+$lang['downloads_2']         = "BT";
+$lang['downloads_3']         = "Raysource";
+$lang['downloads_4']         = "Mag";
+
 //2015-10-6 Alex Add end
 
 ?>

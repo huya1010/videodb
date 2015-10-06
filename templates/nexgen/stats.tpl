@@ -48,6 +48,18 @@
               </td>
             </tr>
             <tr>
+              <td><h6 class="subheader">{$lang.videobystud}:</h6>{$lang.multiple_studio}</td>
+              <td>
+              	<div class="small-cols-1 large-cols-2">
+          				<ul>
+          					{foreach item=row from=$stats.count_studio}
+          					<li>{$row.count} <a href="search.php?q=&studios[]={$row.id}">{$row.name}</a></li>
+          					{/foreach}
+          				</ul>
+                </div>
+              </td>
+            </tr>
+            <tr>
               <td><h6 class="subheader">{$lang.year}:</h6></td>
               <td>
                 <table class="small-12">

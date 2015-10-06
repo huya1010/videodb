@@ -157,6 +157,20 @@
 				</div><!-- col -->
 			</div><!-- row -->
 
+			<div class="row">
+				<div class="small-2 large-1 columns">
+					<dl class="sub-nav" input-checkbox>
+						<dt>{$lang.studio}</dt>
+					</dl>
+				</div><!-- col -->
+				<div class="small-10 large-11 columns">
+					<dl class="sub-nav" input-checkbox>
+						{foreach $studios as $studio}
+						<dd {if $studio.checked}class="active"{/if}><a href="studios[]" value="{$studio.id}">{$studio.name}</a></dd>
+						{/foreach}
+					</dl>
+				</div><!-- col -->
+			</div><!-- row -->
 
 			<h4 class="subheader">{$lang.media_details}</h4>
 
@@ -294,6 +308,42 @@
 
 			</div><!-- row -->
 
+			<div class="row">
+				<div class="small-12 large-12 columns">
+					<label for="filename">{$lang.location}</label>
+					<input type="text" name="location" id="location" value="{$video.q_location}"/>
+				</div><!-- col -->
+			</div><!-- row -->
+
+			<h4 class="subheader">Download Details</h4>
+
+			<div class="row">
+				<div class="small-12 columns">
+					<label>{$lang.downloads_1}</label>
+					<input type="text" name="download1" id="download1" value="{$video.q_download1}"/>
+				</div><!-- col -->
+			</div><!-- row -->
+
+			<div class="row">
+				<div class="small-12 columns">
+					<label>{$lang.downloads_2}</label>
+					<input type="text" name="download2" id="download2" value="{$video.q_download2}"/>
+				</div><!-- col -->
+			</div><!-- row -->
+
+			<div class="row">
+				<div class="small-12 columns">
+					<label>{$lang.downloads_3}</label>
+					<input type="text" name="download3" id="download3" value="{$video.q_download3}"/>
+				</div><!-- col -->
+			</div><!-- row -->
+
+			<div class="row">
+				<div class="small-12 columns">
+					<label>{$lang.downloads_4}</label>
+					<input type="text" name="download4" id="download4" value="{$video.q_download4}"/>
+				</div><!-- col -->
+			</div><!-- row -->
 
 			{if $video.custom1name || $video.custom2name || $video.custom3name || $video.custom4name}
 			<h4 class="subheader">Custom Fields</h4>

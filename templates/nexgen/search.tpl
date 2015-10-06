@@ -101,6 +101,21 @@
 				</div><!-- col -->
 			</div><!-- row -->
 
+			<div class="row">
+				<div class="small-2 large-1 columns">
+					<dl class="sub-nav" input-checkbox>
+						<dt>{$lang.studio}:</dt>
+					</dl>
+				</div><!-- col -->
+				<div class="small-10 large-11 columns">
+					<dl class="sub-nav" input-checkbox>
+						{foreach $studios as $studio}
+						<dd {if $studio.checked}class="active"{/if}><a href="studios[]" value="{$studio.id}">{$studio.name}</a></dd>
+						{/foreach}
+					</dl>
+				</div><!-- col -->
+			</div><!-- row -->
+
 		</div><!-- col -->
 	</div><!-- row -->
 

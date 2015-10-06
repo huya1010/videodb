@@ -152,12 +152,12 @@ function out_studios($selected)
 }
 
 /**
- * Generate genres array for use with studio checkboxes
+ * Generate studios array for use with studio checkboxes
  *
  * @param  array $selected  selected studio IDs
  * @return                  string HTML for studio checkboxes
  */
-function out_studio2($item_studios = null)
+function out_studios2($item_studios = null)
 {
 	// get detailed studios
     $all_studios = getStudios();
@@ -166,7 +166,7 @@ function out_studio2($item_studios = null)
 	foreach ($all_studios as $stud) {
 
 		// selected?
-		if ($item_studios) $gen['checked'] = (@in_array($gen['id'], $item_studios)) ? 1 : 0;
+		if ($item_studios) $stud['checked'] = (@in_array($stud['id'], $item_studios)) ? 1 : 0;
 		
 		$studios[] = $stud;
 	}

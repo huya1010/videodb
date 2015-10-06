@@ -147,7 +147,8 @@ if (!empty($id))
     $SELECT = 'SELECT '.TBL_DATA.'.id, title, subtitle, language, diskid, comment,
                       disklabel, imdbID, year, imgurl, director, actors, runtime,  
                       country, plot, filename, filesize, filedate, audio_codec,  
-                      video_codec, video_width, video_height, istv, lastupdate,  
+                      video_codec, video_width, video_height, istv, lastupdate, 
+					  location, download1, download2, download3, download4,
                       email, rating, custom1, custom2, custom3, custom4, 
                       !ISNULL('.TBL_USERSEEN.'.video_id) AS seen,
                       '.TBL_USERS.'.name AS owner, '.TBL_MEDIATYPES.'.name AS mediatype  

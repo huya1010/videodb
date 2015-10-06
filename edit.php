@@ -212,13 +212,13 @@ if ($lookup && $imdbID)
     if (count($studios) == 0 || ($lookup > 1))
     {
         $studios = array();
-        $gnames = $imdbdata['studios'];
-        if (isset($gnames))
+        $snames = $imdbdata['studios'];
+        if (isset($snames))
         {
-            foreach ($gnames as $gname)
+            foreach ($snames as $sname)
             {
                 // check if studio is found- otherwise fail silently
-                if (is_numeric($studio = getstudioId($gname)))
+                if (is_numeric($studio = getstudioId($sname)))
                 {
                     $studios[] = $studio;
                 }

@@ -229,6 +229,7 @@ $SQL    = 'SELECT '.TBL_DATA.'.id, '.TBL_DATA.'.diskid,
                   country, filename, filesize, filedate, audio_codec,
                   video_codec, video_width, video_height, istv,
                   lastupdate, mediatype,
+                  location, download1, download2, download3, download4, 
                   custom1, custom2, custom3, custom4, 
                   created, !ISNULL('.TBL_USERSEEN.'.video_id) AS seen
              FROM '.TBL_DATA.'

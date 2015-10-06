@@ -119,9 +119,10 @@ function getItemstudios($id, $names = false)
  */
 function setItemstudios($id, $studios)
 {
-    if (count($studios))
+    runSQL('DELETE FROM '.TBL_VIDEOSTUDIO.' WHERE video_id = '.$id);
+
+	if (count($studios))
     {
-        runSQL('DELETE FROM '.TBL_VIDEOSTUDIO.' WHERE video_id = '.$id);
         $studios = array_unique($studios);
 
         foreach($studios as $studio)

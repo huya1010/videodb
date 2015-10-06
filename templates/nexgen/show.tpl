@@ -123,6 +123,14 @@ function showTrailer(title)
 					</div><!-- col -->
 
 					<div class="small-6 columns">
+						<p>{$lang.studios}:
+							{foreach $studios as $studio name=loop}
+							<a href="search.php?q=&amp;studios[]={$studio.id}">{$studio.name}</a>{if $smarty.foreach.loop.index < $smarty.foreach.loop.total-1}, {/if}
+							{/foreach}
+						</p>
+					</div><!-- col -->
+
+					<div class="small-6 columns">
 						<p>{$lang.language}:
 							{foreach $video.language as $language name="loop"}
 							<a href="search.php?q=%22{$language|escape:url}%22&amp;fields=language">{$language|capitalize}</a>{if $smarty.foreach.loop.index < $smarty.foreach.loop.total-1}, {/if}
@@ -237,6 +245,13 @@ function showTrailer(title)
 				<p>{$lang.dimension}: {$video.video_width}x{$video.video_height}</p>
 			</div><!-- col -->
 		</div><!-- row -->
+
+		<div class="row">
+			<div class="small-6 large-6 columns">
+				<p>{$lang.location}: {$video.location}</p>
+			</div><!-- col -->
+		</div><!-- row -->
+
 		{/if}
 
 
@@ -250,6 +265,16 @@ function showTrailer(title)
 		</div><!-- row -->
 		{/if}
 
+		<h4 class="subheader">Download Details</h4>
+
+		<div class="row">
+			<div class="small-12 columns">
+				<p>{$lang.downloads_1}: {$video.download1}</p>
+				<p>{$lang.downloads_2}: {$video.download2}</p>
+				<p>{$lang.downloads_3}: {$video.download3}</p>
+				<p>{$lang.downloads_4}: {$video.download4}</p>
+			</div><!-- col -->
+		</div><!-- row -->
 
 		{if $video.custom1name || $video.custom2name || $video.custom3name || $video.custom4name}
 		<h4 class="subheader">Custom Details</h4>

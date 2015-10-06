@@ -25,7 +25,7 @@ function mapstudios($studios)
     if (empty($dbstudios)) 
     {
         $dbstudios = array();
-        foreach (runSQL('SELECT id, name FROM '.TBL_studios.' ORDER BY name') as $row) 
+        foreach (runSQL('SELECT id, name FROM '.TBL_STUDIOS.' ORDER BY name') as $row) 
         {
             $dbstudios[] = $row['name'];
         }
@@ -77,7 +77,7 @@ function mapstudios($studios)
 function getStudioId($name)
 {
 	$name   = addslashes($name);
-    $result = runSQL("SELECT id FROM ".TBL_studios." WHERE LCASE(name) = LCASE('".$name."')");
+    $result = runSQL("SELECT id FROM ".TBL_STUDIOS." WHERE LCASE(name) = LCASE('".$name."')");
 	return $result[0]['id'];
 }
 
@@ -95,7 +95,7 @@ function getItemstudios($id, $names = false)
     if (empty($id)) return $studios;
     
     $SELECT = 'SELECT studios.id, studios.name
-                 FROM '.TBL_studios.' AS studios, '.TBL_VIDEOSTUDIO.' AS videostudio
+                 FROM '.TBL_STUDIOS.' AS studios, '.TBL_VIDEOSTUDIO.' AS videostudio
                 WHERE studios.id = videostudio.studio_id
                   AND videostudio.video_id = '.$id;
     $result = runSQL($SELECT);

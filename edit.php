@@ -14,6 +14,9 @@
 
 require_once './core/functions.php';
 require_once './core/genres.php';
+//2015-10-6 Alex ADD start
+require_once './core/studios.php';
+//2015-10-6 Alex ADD end
 require_once './core/custom.php';
 require_once './core/edit.core.php';
 
@@ -28,6 +31,10 @@ permission_or_die(PERM_WRITE, ($id) ? get_owner_id($id) : PERM_ANY);
 
 // clean input data
 $genres = (is_array($genres)) ? array_filter($genres) : array();
+
+//2015-10-6 Alex ADD start
+$studios = (is_array($studios)) ? array_filter($studios) : array();
+//2015-10-6 Alex ADD end
 
 // ajax autocomplete?
 if ($ajax_prefetch_id || $ajax_autocomplete_title || $ajax_autocomplete_subtitle)
@@ -200,6 +207,26 @@ if ($lookup && $imdbID)
         }
     }
 
+//2015-10-6 Alex Add start studios
+    // lookup studios
+    if (count($studios) == 0 || ($lookup > 1))
+    {
+        $studios = array();
+        $gnames = $imdbdata['studios'];
+        if (isset($gnames))
+        {
+            foreach ($gnames as $gname)
+            {
+                // check if studio is found- otherwise fail silently
+                if (is_numeric($studio = getstudioId($gname)))
+                {
+                    $studios[] = $studio;
+                }
+            }
+        }
+    }
+//2015-10-6 Alex add end
+
     // lookup actors
     if (empty($actors) || ($lookup > 1))
     {
@@ -209,7 +236,10 @@ if ($lookup && $imdbID)
     // lookup all other fields
     foreach (array_keys($imdbdata) as $name)
     {
-        if (in_array($name, array('coverurl', 'genres', 'cast', 'id'))) continue;
+//2015-10-6 Alex CHG start
+        //if (in_array($name, array('coverurl', 'genres', 'cast', 'id'))) continue;
+        if (in_array($name, array('coverurl', 'genres', 'studios', 'cast', 'id'))) continue;
+//2015-10-6 Alex CHG end
 
         // use !$$ as empty($$) doesn't seem to work
         if (!$$name || ($lookup > 1))
@@ -254,6 +284,10 @@ if ($copy && $copyid)
     }
     
     $genres = getItemGenres($copyid);
+
+//2015-10-6 Alex ADD start
+    $studios = getItemStudios($copyid);
+//2015-10-6 Alex ADD end
 }
 
 
@@ -275,6 +309,11 @@ if ($save)
 
     // save genres
     setItemGenres($id, $genres);
+
+//2015-10-6 Alex ADD start
+    // save studios
+    setItemStudios($id, $studios);
+//2015-10-6 Alex ADD end
 
     // set seen for currently logged in user
     set_userseen($id, $seen);

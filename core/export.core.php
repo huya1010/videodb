@@ -9,6 +9,9 @@
  */
 
 require_once './core/genres.php';
+//2015-10-6 Alex ADD start
+require_once './core/studios.php';
+//2015-10-6 Alex ADD end
 
 function listExports($link, $omit = array('rss'))
 {
@@ -55,6 +58,14 @@ function exportData($WHERE)
     {
         $result[$i]['genres'] = getItemGenres($result[$i]['id'], true);
     }    
+
+//2015-10-6 Alex ADD start
+    // studios
+    for($i=0; $i<count($result); $i++)
+    {
+        $result[$i]['studios'] = getItemStudios($result[$i]['id'], true);
+    }    
+//2015-10-6 Alex ADD end
 
     return $result;
 }

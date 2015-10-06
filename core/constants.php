@@ -46,6 +46,11 @@ define('TBL_GENRES',        $config['db_prefix'].'genres');
 define('TBL_VIDEOGENRE',    $config['db_prefix'].'videogenre');
 define('TBL_MEDIATYPES',    $config['db_prefix'].'mediatypes');
 
+//2015-10-6 Alex ADD start
+define('TBL_STUDIOS',        $config['db_prefix'].'studios');
+define('TBL_VIDEOSTUDIO',    $config['db_prefix'].'videostudio');
+//2015-10-6 Alex ADD end
+
 define('TBL_LENT',          $config['db_prefix'].'lent');
 
 define('TBL_CACHE',         $config['db_prefix'].'cache');

@@ -23,6 +23,10 @@ session_default('listcolumns', $config['listcolumns']);
 
 session_set('genres', $genres = isset($genres) ? $genres : array());
 
+//2015-10-6 Alex ADD start
+session_set('studios', $studios = isset($studios) ? $studios : array());
+//2015-10-6 Alex ADD end
+
 // enable redirects to last list view for delete.php
 session_set('listview', 'search.php');
 
@@ -129,7 +133,12 @@ if (isset($q) &! (isset($default) && empty($q)))
 
 	// remove empty genres
 	$genres = array_filter($genres);
-	
+
+//2015-10-6 Alex ADD start
+	// remove empty studios
+	$studios = array_filter($studios);
+//2015-10-6 Alex ADD end
+
 	if (!empty($q))
 	{
 		$error  = '';
@@ -178,6 +187,24 @@ if (isset($q) &! (isset($default) && empty($q)))
 		$WHERES .= $FILTER;
 		$WHERES .= ')';
 	}
+
+//2015-10-6 Alex ADD start
+    // filter by studios
+	if (count($studios))
+	{
+        $JOINS  .= ' LEFT JOIN '.TBL_VIDEOSTUDIO.' ON '.TBL_DATA.'.id = '.TBL_VIDEOSTUDIO.'.video_id ';
+        $WHERES .= ' AND '.TBL_DATA.'.id = '.TBL_VIDEOSTUDIO.'.video_id AND (';
+
+		foreach ($studios as $studio)
+        {
+            $FILTER .= 'OR '.TBL_VIDEOSTUDIO.'.studio_id = '.$studio.' ';
+		}
+		
+        $FILTER  = preg_replace('/^OR/', '', $FILTER);
+		$WHERES .= $FILTER;
+		$WHERES .= ')';
+	}
+//2015-10-6 Alex ADD end
 
     // limit visibility
     if ($config['multiuser'])
@@ -276,6 +303,12 @@ $smarty->assign('q_q', formvar($q));
 $smarty->assign('search_fields', $search_fields);
 $smarty->assign('genreselect', out_genres($genres));
 $smarty->assign('genres', out_genres2($genres));
+
+//2015-10-6 Alex ADD start
+$smarty->assign('studioselect', out_studios($studios));
+$smarty->assign('studios', out_studios2($studios));
+//2015-10-6 Alex ADD end
+
 $smarty->assign('engine', $config['engine']);
 $smarty->assign('actors', prepare_cast($actors));
 

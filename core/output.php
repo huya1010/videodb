@@ -101,6 +101,80 @@ function out_genres2($item_genres = null)
     return($genres);
 }
 
+//2015-10-6 Alex ADD start
+/**
+ * Return list of valid genres from db
+ */
+function getStudios()
+{
+    $SELECT = 'SELECT id, name
+                 FROM '.TBL_STUDIOS.'
+             ORDER BY name';
+    $result = runSQL($SELECT);
+    
+    return $result;
+}
+
+/**
+ * Display studio checkboxes
+ *
+ * @param  array $selected  selected studio IDs
+ * @return                  string HTML for studio checkboxes
+ */
+function out_studios($selected)
+{
+    global $config;
+
+    $result = getStudios();
+	$out = '<table class="studioselect"><tr>';
+
+	$row = 0;
+	foreach ($result as $res)
+	{
+
+		$out .= '<td nowrap="nowrap">';
+		$out .= '<input type="checkbox" name="studios[]" id="studioid'.$res['id'].'" value="'.$res['id'].'"';
+		if (@in_array ($res['id'], $selected))
+        {
+			$out .= ' checked="checked"';
+		}
+		$out .= '/>';
+		$out .= '<label for="studioid'.$res['id'].'">'.$res['name'].'</label>';
+		$out .= '</td>';
+        if ((++$row % 5) == 0)
+        {
+			$out .= '</tr><tr>';
+		}
+	}
+    $out .= '</tr></table>';
+
+	return $out;
+}
+
+/**
+ * Generate genres array for use with studio checkboxes
+ *
+ * @param  array $selected  selected studio IDs
+ * @return                  string HTML for studio checkboxes
+ */
+function out_studio2($item_studios = null)
+{
+	// get detailed studios
+    $all_studios = getStudios();
+    
+	$studios = array();
+	foreach ($all_studios as $stud) {
+
+		// selected?
+		if ($item_studios) $gen['checked'] = (@in_array($gen['id'], $item_studios)) ? 1 : 0;
+		
+		$studios[] = $stud;
+	}
+
+    return($studios);
+}
+//2015-10-6 Alex ADD end
+
 /**
  * Display selectbox with available Mediatypes
  *

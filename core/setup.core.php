@@ -295,6 +295,21 @@ function setup_getGenres()
     return array_associate($result, 'id', 'name');
 }
 
+//2015-10-6 Alex ADD start
+/** 
+ * Studios
+ */
+function setup_getStudios()
+{
+    $SELECT = 'SELECT id, name
+                 FROM '.TBL_STUDIOS.'
+             ORDER BY name';
+    $result = runSQL($SELECT);
+    
+    return array_associate($result, 'id', 'name');
+}
+//2015-10-6 Alex ADD end
+
 /**
  * Get list of engines for default engine selection
  */

@@ -49,6 +49,10 @@ if (count($res))
 runSQL('DELETE FROM '.TBL_DATA.' WHERE id = '.$id);
 runSQL('DELETE FROM '.TBL_VIDEOGENRE.' WHERE video_id = '.$id);
 
+//2015-10-6 Alex ADD start
+runSQL('DELETE FROM '.TBL_VIDEOSTUDIO.' WHERE video_id = '.$id);
+//2015-10-6 Alex ADD end
+
 // clear smarty cache for this item
 #!! this does not work- at least not with Smarty3
 #$smarty->cache->clear($id);

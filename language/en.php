@@ -64,7 +64,7 @@ $lang['extid']               = 'External Id';
 $lang['main_details']        = 'Main Details';
 $lang['media_details']       = 'Media Details';
 $lang['file_details']        = 'File Details';
-$lang['cancel']        		 = 'Cancel';
+$lang['cancel']              = 'Cancel';
 
 #
 # Show
@@ -104,7 +104,7 @@ $lang['update']              = "Update";
 $lang['create']              = "Create";
 $lang['action']              = "Action";
 $lang['existingusers']       = "Modify existing user";
-$lang['selecteduser']     	 = "Selected user";
+$lang['selecteduser']        = "Selected user";
 $lang['permforuser']         = "Permissions for user";
 $lang['permtouser']          = "Permissions related to user";
 $lang['createuser']          = "Create new user";
@@ -128,8 +128,8 @@ $lang['msg_borrowaskfail']   = "The sending of your request failed for some reas
 # Phrases
 #
 
-$lang['delete_movie']		 = "You're about to delete this movie. Are you sure you want to proceed?";
-$lang['delete_user']		 = "You're about to delete this user. Are you sure you want to proceed?";
+$lang['delete_movie']        = "You're about to delete this movie. Are you sure you want to proceed?";
+$lang['delete_user']         = "You're about to delete this user. Are you sure you want to proceed?";
 $lang['deleted']             = "Movie was deleted.";
 
 $lang['available']           = "is available.";
@@ -169,7 +169,7 @@ $lang['contrib']             = "Tools";
 $lang['imdbbrowser']         = "IMDB Online";
 $lang['help']                = "Help";
 $lang['profile']             = "Profile";
-$lang['users']             	 = "Users";
+$lang['users']               = "Users";
 $lang['filter']              = "Filter";
 
 #
@@ -197,8 +197,8 @@ $lang['filter_available']    = '<available>';
 # Trailers
 #
 
-$lang['trailer_search']  	   = "Searching for trailer...";
-$lang['trailer_show']  	   = "Show trailers";
+$lang['trailer_search']      = "Searching for trailer...";
+$lang['trailer_show']  	     = "Show trailers";
 
 #
 # Statistics
@@ -238,7 +238,7 @@ $lang['opt_custom']           = 'Custom Fields';
 $lang['opt_engines']          = 'Data Providers';
 $lang['opt_security']         = 'Network and Security';
 $lang['opt_caching']          = 'Caching';
-$lang['opt_apikeys']       	= 'API Keys';
+$lang['opt_apikeys']          = 'API Keys';
 
 $lang['enable']              = "enable";
 
@@ -301,7 +301,7 @@ $lang['help_denyguest']      = "Enabling this denies access for everyone except 
 $lang['help_denyguestn']     = "No public access";
 $lang['help_adultgenres']    = "Movies in the genres you select here will only be visible to users with 'adult' permissions. Hold down the CTRL-key to select multiple genres. (Only applies when multiuser support is enabled)";
 $lang['help_adultgenresn']   = "Adult Genres";
-$lang['help_pageno']   	   = "Number of items to display on each page. Use 0 or leave empty to disable pagination.";
+$lang['help_pageno']         = "Number of items to display on each page. Use 0 or leave empty to disable pagination.";
 $lang['help_pagenon']        = "Maximum items per page";
 
 $lang['help_engine']         = "Enabling this option will allow videoDB to retrieve data from %s.";
@@ -318,5 +318,10 @@ $lang['of']                  = "of";
 $lang['records']             = "records";
 
 $lang['warn_noOwner']        = "Data not saved - you have to select an owner first!";
+
+//2015-10-6 Alex Add start studios
+$lang['studio']               = "studio";
+$lang['studios']              = "studios";
+//2015-10-6 Alex Add end
 
 ?>

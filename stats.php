@@ -101,6 +101,16 @@ $result = runSQL('SELECT A.name, COUNT(*) AS count, A.id
                 ORDER BY count DESC');
 $stats['count_genre'] = $result;
 
+//2015-10-6 Alex ADD start STUDIO
+$result = runSQL('SELECT A.name, COUNT(*) AS count, A.id
+                    FROM '.TBL_STUDIOS.' A, '.TBL_VIDEOSTUDIO.' B, '.TBL_DATA.' C 
+                   WHERE B.studio_id = A.id
+                   	 AND B.video_id = C.id'.$WHERES.'
+                GROUP BY A.name
+                ORDER BY count DESC');
+$stats['count_studio'] = $result;
+//2015-10-6 Alex ADD end
+
 $result = runSQL('SELECT A.name, COUNT(*) AS count, A.id
                     FROM '.TBL_MEDIATYPES.' A, '.TBL_DATA.' B
                    WHERE B.mediatype = A.id'.$WHERES.' 

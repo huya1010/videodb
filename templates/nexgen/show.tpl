@@ -105,8 +105,13 @@ function showTrailer(title)
 					</div><!-- col -->
 
 					<div class="small-6 columns">
-						<p>{$lang.runtime}: {if $video.runtime}{$video.runtime}min{/if}</p>
+						<p>{$lang.language}:
+							{foreach $video.language as $language name="loop"}
+							<a href="search.php?q=%22{$language|escape:url}%22&amp;fields=language">{$language|capitalize}</a>{if $smarty.foreach.loop.index < $smarty.foreach.loop.total-1}, {/if}
+							{/foreach}
+						</p>
 					</div><!-- col -->
+
 				</div><!-- row -->
 			</div><!-- col -->
 		</div><!-- row -->
@@ -130,13 +135,6 @@ function showTrailer(title)
 						</p>
 					</div><!-- col -->
 
-					<div class="small-6 columns">
-						<p>{$lang.language}:
-							{foreach $video.language as $language name="loop"}
-							<a href="search.php?q=%22{$language|escape:url}%22&amp;fields=language">{$language|capitalize}</a>{if $smarty.foreach.loop.index < $smarty.foreach.loop.total-1}, {/if}
-							{/foreach}
-						</p>
-					</div><!-- col -->
 				</div><!-- col -->
 			</div><!-- row -->
 
@@ -150,6 +148,20 @@ function showTrailer(title)
 
 					<div class="small-6 columns">
 						<p>{$lang.rating}: {if $video.rating}{$video.rating}{/if}</p>
+					</div><!-- col -->
+				</div><!-- row -->
+			</div><!-- col -->
+		</div><!-- row -->
+
+		<div class="row">
+			<div class="small-12 large-6 columns">
+				<div class="row"><!-- clear helper -->
+					<div class="small-6 columns">
+						<p>{$lang.runtime}: {if $video.runtime}{$video.runtime}min{/if}</p>
+					</div><!-- col -->
+
+					<div class="small-6 columns">
+						<p> <a href="{$video.location}">点击播放</a></p>
 					</div><!-- col -->
 				</div><!-- row -->
 			</div><!-- col -->

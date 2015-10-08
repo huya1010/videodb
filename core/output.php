@@ -103,7 +103,7 @@ function out_genres2($item_genres = null)
 
 //2015-10-6 Alex ADD start
 /**
- * Return list of valid genres from db
+ * Return list of valid studios from db
  */
 function getStudios()
 {

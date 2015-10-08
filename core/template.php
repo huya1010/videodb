@@ -111,7 +111,11 @@ function tpl_header($help = '', $title = '')
     {
         if (check_permission(PERM_WRITE, PERM_ANY))
         {
-            $header['new']    = 'edit.php';
+//2015-10-6 Alex ADD start
+           $header['studio']    = 'studiolist.php';
+//2015-10-6 Alex ADD end
+
+			$header['new']    = 'edit.php';
             if ($config['showtools']) $header['contrib'] = 'contrib.php';
         }
         if (check_permission(PERM_ADMIN)) $header['setup'] = 'setup.php';
@@ -243,6 +247,10 @@ function tpl_list($list)
         // setup imgurls
         $list[$i]['imgurl'] = ($config['thumbnail']) ? getThumbnail($list[$i]['imgurl']) : '';
 
+		//2015-10-6 Alex ADD start
+		 $list[$i]['studios']= getItemStudios($list[$i]['id'], true);
+		//2015-10-6 Alex ADD end
+
         // check for flagfile
         $languages = $list[$i]['language'];
         $flagfile = img('flags/'.$languages.'.gif');
@@ -298,6 +306,33 @@ function tpl_list($list)
 
     // show total number of movies in footer
     $smarty->assign('totalresults', count($list));
+}
+
+
+/**
+ * Assigns the searchresults/browselist to the smarty engine
+ *
+ * @param   array   indexed array containing the item data
+ */
+function tpl_studiolist($studiolist)
+{
+    global $smarty, $config;
+    //global $listcolumns;
+
+    for ($i=0; $i < count($studiolist); $i++)
+    {
+		 if ($var % 2 == 0)
+			$studiolist[$i]['trclass'] = 'even';
+		 else
+			$studiolist[$i]['trclass'] = 'odd';
+    }
+
+    // enable dynamic columns in list view
+    //$smarty->assign('listcolumns', session_get('listcolumns'));
+    $smarty->assign('studiolist', $studiolist);
+
+    // show total number of studios in footer
+    $smarty->assign('totalstudios', count($studiolist));
 }
 
 /**

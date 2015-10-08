@@ -238,7 +238,7 @@ if ($lookup && $imdbID)
     {
 //2015-10-6 Alex CHG start
         //if (in_array($name, array('coverurl', 'genres', 'cast', 'id'))) continue;
-        if (in_array($name, array('coverurl', 'genres', 'studios', 'cast', 'id'))) continue;
+        if (in_array($name, array('coverurl', 'genres', 'studios', 'cast', 'id', 'location', 'download1', 'download2', 'download3', 'download4'))) continue;
 //2015-10-6 Alex CHG end
 
         // use !$$ as empty($$) doesn't seem to work

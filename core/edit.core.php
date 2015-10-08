@@ -3,7 +3,7 @@
  * Edit functions. Split into separate file for reuse.
  *
  * @package videoDB
- * @author  Andreas Götz <cpuidle@gmx.de>
+ * @author  Andreas Gï¿½tz <cpuidle@gmx.de>
  * @author  Andreas Gohr <a.gohr@web.de>
  * @author  Chinamann <chinamann@users.sourceforge.net>
  * @version $Id: edit.core.php,v 1.9 2009/12/05 13:56:04 andig2 Exp $
@@ -15,6 +15,7 @@ require_once './core/security.php';
 $imdb_set_fields    = array('md5','title','subtitle','language','diskid','mediatype','comment','disklabel',
                             'imdbID','year','imgurl','director','actors','runtime','country','plot','filename',
                             'filesize','filedate','audio_codec','video_codec','video_width','video_height','istv',
+                            'location', 'download1', 'download2', 'download3', 'download4',
                             'rating', 'custom1','custom2','custom3','custom4');
 
 // list of fields to be overwritten by refetchAllInfos-Script
@@ -84,7 +85,7 @@ function removeArticles($field)
                       'ein ', 'eine ', 'eines ', 'le ', 'el ', "l'", 'il ', 'les ', 'i ',
                       'o ', 'un ', 'los ', 'de ', 'an ', 'una ', 'las ', 'gli ', 'het ',
                       'lo ', 'os ', 'az ', 'ha-', 'een ', 'det ', 'oi ', 'ang ', 'ta ',
-                      'al-', 'uno ', "un'", 'ett ', 'mga ', 'Ï ', 'Ç ', 'els ', 'Ôï ', 'Ïé ');
+                      'al-', 'uno ', "un'", 'ett ', 'mga ', 'ï¿½ ', 'ï¿½ ', 'els ', 'ï¿½ï¿½ ', 'ï¿½ï¿½ ');
 
     foreach ($articles as $article)
     {

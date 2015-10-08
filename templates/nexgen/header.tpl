@@ -26,6 +26,8 @@
 
 			{if $header.new}<li{if $header.active == 'new' || $header.active == 'edit'} class="active"{/if}><a href="{$header.new}">{$lang.create}</a></li>{/if}
 
+			{if $header.studio}<li{if $header.active == 'studio'} class="active"{/if}><a href="{$header.studio}">{$lang.studio}</a></li>{/if}
+
 			{if $header.browse}
 			<li class="has-dropdown hide-for-small {if $header.active == 'browse'}active{/if}">
 				<a href="{$header.browse}">{$lang.browse}</a>

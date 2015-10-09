@@ -332,6 +332,10 @@ $lang['downloads_2']         = "BT";
 $lang['downloads_3']         = "Raysource";
 $lang['downloads_4']         = "Mag";
 
+$lang['manage']              = "Manage";
+$lang['options']             = "Options";
+$lang['export']              = "Export";
+
 //2015-10-6 Alex Add end
 
 ?>

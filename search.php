@@ -238,9 +238,11 @@ if (isset($q) &! (isset($default) && empty($q)))
                       lastupdate, mediatype, created,
                       location, download1, download2, download3, download4, 
                       custom1, custom2, custom3, custom4,
+                      !ISNULL('.TBL_USERSEEN.'.video_id) AS seen,
                       '.TBL_LENT.'.who, '.TBL_USERS.'.name AS owner, '.TBL_MEDIATYPES.'.name AS mediatypename
                  FROM '.TBL_DATA.'
             LEFT JOIN '.TBL_USERS.' ON owner_id = '.TBL_USERS.'.id
+            LEFT JOIN '.TBL_USERSEEN.' ON '.TBL_DATA.'.id = '.TBL_USERSEEN.'.video_id AND '.TBL_USERSEEN.'.user_id = '.get_current_user_id().'
             LEFT JOIN '.TBL_LENT.' ON '.TBL_DATA.'.diskid = '.TBL_LENT.'.diskid
             LEFT JOIN '.TBL_MEDIATYPES.' ON '.TBL_DATA.'.mediatype = '.TBL_MEDIATYPES.'.id'."
                $JOINS

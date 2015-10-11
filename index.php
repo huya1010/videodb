@@ -149,8 +149,9 @@ if ($ajax_quicksearch || $quicksearch)
 if ($ajax_quicksearch)
 {
     // do hard work
-    $SQL    = 'SELECT '.TBL_DATA.'.id, title, subtitle
-                 FROM '.TBL_DATA.'
+    $SQL    = 'SELECT '.TBL_DATA.'.id, title, subtitle,
+			!ISNULL('.TBL_USERSEEN.'.video_id) AS seen
+			FROM '.TBL_DATA.'
             LEFT JOIN '.TBL_USERS.' ON '.TBL_DATA.'.owner_id = '.TBL_USERS.'.id 
             LEFT JOIN '.TBL_USERSEEN.' ON '.TBL_DATA.'.id = '.TBL_USERSEEN.'.video_id AND '.TBL_USERSEEN.'.user_id = '.get_current_user_id()."
                $JOINS 

@@ -71,6 +71,34 @@ function showTrailer(title)
 	</div><!-- col -->
 
 	<!-- main block -->
+	<object id='player' height=400 width=500 align=center classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6">
+	<param name='URL' value='{$video.location}'/>
+	<param name='rate' value='1' />
+	<param name='balance' value='0' />
+	<param name='currentPosition' value='0' />
+	<param name='defaultFrame' value='' />
+	<param name='playCount' value='1' />
+	<param name='autoStart' value='-1' />
+	<param name='currentMarker' value='0' />
+	<param name='invokeURLs' value='-1' />
+	<param name='baseURL' value='' />
+	<param name='volume' value='50' />
+	<param name='mute' value='0' />
+	<param name='uiMode' value='full' />
+	<param name='stretchToFit' value='0' />
+	<param name='windowlessVideo' value='0' />
+	<param name='enabled' value='-1' />
+	<param name='enableContextMenu' value='-1' />
+	<param name='fullScreen' value='0' />
+	<param name='SAMIStyle' value='' />
+	<param name='SAMILang' value='' />
+	<param name='SAMIFilename' value='' />
+	<param name='captioningID' value='' />
+	<param name='enableErrorDialogs' value='0' />
+	<param name='_cx' value='13229' />
+	<param name='_cy' value='10583' />
+	</object>
+
 	<div class="small-12 large-9 columns show-details">
 		<h4 class="subheader">Main Details</h4>
 
@@ -160,9 +188,7 @@ function showTrailer(title)
 						<p>{$lang.runtime}: {if $video.runtime}{$video.runtime}min{/if}</p>
 					</div><!-- col -->
 
-					<div class="small-6 columns">
-						<p> <a href="{$video.location}">点击播放</a></p>
-					</div><!-- col -->
+					
 				</div><!-- row -->
 			</div><!-- col -->
 		</div><!-- row -->

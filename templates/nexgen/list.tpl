@@ -25,7 +25,7 @@
 				
 {*					Uncomment this if you want title/subtitle to be shown above the cover image:*}
 					<div>{$video.title}{if $video.subtitle} - {$video.subtitle}{/if}</div>
-
+					<div>{$video.year} {if $video.seen} <span class="taginlist">{$lang.seen}</span>{/if}</div> 
 					{if $video.imgurl}{html_image file=$video.imgurl max_width=$max_width max_height=$max_height}{/if}
 					
 					{*{$video.studios}*}

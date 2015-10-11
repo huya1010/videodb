@@ -158,3 +158,11 @@ dl.sub-nav.tight dd {
 .tabs dd.active, .tabs li.active { border-top: 3px solid #2ba6cb; margin-top: -3px; }
 .tabs dd.active a, .tabs li.active a { cursor: default; color: #3c3c3c; background: #fff; border-left: 1px solid #e6e6e6; border-right: 1px solid #e6e6e6; font-weight: bold; }
 .tabs dd:first-child, .tabs li:first-child { margin-left: 0; }
+
+/* Alex hu ---------------------- */
+
+.taginlist {
+	font-weight:bold;
+	color:#333399;
+	text-transform: capitalize;
+}

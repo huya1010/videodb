@@ -244,9 +244,9 @@ if (isset($q) &! (isset($default) && empty($q)))
             LEFT JOIN '.TBL_USERS.' ON owner_id = '.TBL_USERS.'.id
             LEFT JOIN '.TBL_USERSEEN.' ON '.TBL_DATA.'.id = '.TBL_USERSEEN.'.video_id AND '.TBL_USERSEEN.'.user_id = '.get_current_user_id().'
             LEFT JOIN '.TBL_LENT.' ON '.TBL_DATA.'.diskid = '.TBL_LENT.'.diskid
-            LEFT JOIN '.TBL_MEDIATYPES.' ON '.TBL_DATA.'.mediatype = '.TBL_MEDIATYPES.'.id'."
-               $JOINS
-                WHERE ".$WHERES.'
+            LEFT JOIN '.TBL_MEDIATYPES.' ON '.TBL_DATA.'.mediatype = '.TBL_MEDIATYPES.'.id'.
+               $JOINS.'
+                WHERE '.$WHERES.'
              ORDER BY title, subtitle';
 
     $result = runSQL($select);

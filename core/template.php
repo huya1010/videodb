@@ -17,6 +17,7 @@ require_once './core/session.php';
 require_once './core/output.php';
 require_once './core/genres.php';
 //2015-10-6 Alex ADD start
+require_once './core/videos.php';
 require_once './core/studios.php';
 //2015-10-6 Alex ADD end
 require_once './core/functions.php';
@@ -608,5 +609,104 @@ function tpl_lookup($find, $engine, $searchtype)
 
     $smarty->assign('engines', $tpl);
 }
+
+
+/**
+ * Assigns the videoinfos to the smarty engine
+ *
+ * @param   array   associative array containing the item data
+ */
+function tpl_studioshow($studio)
+{
+    global $smarty, $config;
+    global $listcolumns;
+
+	$listcolumns=4;
+
+    $smarty->assign('studio', $studio);
+
+    $smarty->assign('videolist', getItemVideos($studio['id'], false));
+
+    // allow XML export
+    foreach (array('xls','pdf','xml') as $export)
+    {
+        if ($config[$export]) $smarty->assign($export, 'show.php?id='.$studio['id'].'&amp;');
+    }
+    // new-style way of exporting
+    // $smarty->assign('exports', listExports('show.php?id='.$video['id'].'&amp;'));
+}
+
+/**
+ * Assigns the videoinfos to the smarty engine
+ */
+function tpl_studioedit($studio)
+{
+	global $smarty, $config, $lang;
+
+	// create a form ready quoted version for each value
+	foreach (array_keys($video) as $key)
+    {
+		$video['q_'.$key] = formvar($video[$key]);
+	}
+
+	// use custom function for language
+	$video['f_language']  = custom_language_input('language', $video['language']);
+
+	// create mediatype selectbox
+    $smarty->assign('mediatypes', out_mediatypes());
+    if (!isset($video['mediatype'])) $video['mediatype'] = $config['mediadefault'];
+
+	// prepare the custom fields
+	customfields($video, 'in');
+
+    if ($config['multiuser'])
+    {
+        $smarty->assign('owners', out_owners(array('0' => ''), (check_permission(PERM_ADMIN)) ? false : PERM_WRITE, true));
+    }
+
+	// item genres
+	$item_genres = getItemGenres($video['id']);
+
+	// new-style
+    $smarty->assign('genres', out_genres2($item_genres));
+#dlog(out_genres2($item_genres));
+#dlog($item_genres);
+    // classic
+    $smarty->assign('genreselect', out_genres($item_genres));
+
+//2015-10-6 Alex ADD start
+	// item studios
+	$item_studios = getItemStudios($video['id']);
+	// new-style
+    $smarty->assign('studios', out_studios2($item_studios));
+    // classic
+    $smarty->assign('studioselect', out_studios($item_studios));
+//2015-10-6 Alex ADD end
+
+	// assign data
+	$smarty->assign('video', $video);
+
+	// get drilldown url for visit link
+	if ($video['imdbID'])
+    {
+        require_once './engines/engines.php';
+        $engine = engineGetEngine($video['imdbID']);	
+        $smarty->assign('link', engineGetContentUrl($video['imdbID'], $engine));
+        $smarty->assign('engine', $engine);
+	}
+
+/*
+    // populate autocomplete boxes
+    $smarty->assign('audio_codecs', array_extract(runSQL('SELECT DISTINCT audio_codec FROM '.TBL_DATA.' WHERE audio_codec IS NOT NULL'), 'audio_codec'));
+    $smarty->assign('video_codecs', array_extract(runSQL('SELECT DISTINCT video_codec FROM '.TBL_DATA.' WHERE video_codec IS NOT NULL'), 'video_codec'));
+*/        
+	$smarty->assign('lookup', array('0' => $lang['radio_look_ignore'],
+							        '1' => $lang['radio_look_lookup'],
+							        '2' => $lang['radio_look_overwrite']));
+
+    // needed for ajax image lookup
+    $smarty->assign('engines', $config['engines']);
+}
+
 
 ?>
